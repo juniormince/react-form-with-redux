@@ -10,9 +10,10 @@ class SnackList extends Component {
     render() {
         return (
             <div>
-                <h3>SNACK LIST</h3>
+                <br/>
+                <h3>YOUR SNACKS</h3>
 
-                <pre>{JSON.stringify(this.props.reduxState)}</pre>
+                {/* <pre>{JSON.stringify(this.props.reduxState)}</pre> */}
                 { this.props.reduxState.firstReducer.map((snack, i) => <li key={i}>
                 {snack}
                 </li>)}

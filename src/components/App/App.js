@@ -2,7 +2,28 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import SnackList from '../SnackList/SnackList';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+// import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
+const theme = createMuiTheme({
+  overrides: {
+    MuiButton: {
+      root: {
+        background: 'linear-gradient(40deg, #D7006E 5%, #FFCFC4 80%)',
+        borderRadius: 3,
+        border: 0,
+        color: 'black',
+        fontWeight: "bold",
+        height: 28,
+        margin: 5,
+        padding: '0 30px',
+        boxShadow: '1px 2px 2px 1px #C90060',
+      },
+    },
+  },
+});
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +31,7 @@ class App extends Component {
 
     this.state = {
       newSnack: '',
-    }
+    };
 
   }
 
@@ -33,15 +54,21 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h3>IT'S FOR SNACKS</h3>
+      <MuiThemeProvider theme={theme}>
 
-        <form onSubmit={this.submitSnax}>
-          <input onChange={this.handleChange} value={this.state.newSnack} />
-          <input type="submit" value="snack it" />
-        </form>
-      <SnackList />
-      </div>
+        <div className="App">
+          <h3>IT'S FOR SNACKS</h3>
+          <TextField
+          label="snack it up"
+          placeholder="s n a c k s"
+          onChange={this.handleChange}
+          value={this.state.newSnack} 
+          margin="normal"
+        />
+          <Button onClick={this.submitSnax}>s n a c k</Button>
+          <SnackList />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
