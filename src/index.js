@@ -15,7 +15,7 @@ import logger from 'redux-logger';
 const firstReducer = (state = [], action) => {
     if (action.type === 'ADD_SNACK')    {
         console.log('first reducer czeck', action);
-        return [...state, 'czeck. add payload here'];
+        return [...state, action.snack];
     }
     return state;
 }

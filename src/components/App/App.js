@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
+import SnackList from '../SnackList/SnackList';
 
 
 class App extends Component {
@@ -23,8 +24,8 @@ class App extends Component {
   // quick, snack to the reducer mobile!
   submitSnax = (event) => {
     event.preventDefault(); //hey browser html we got it
-    const action = { type: 'ADD_SNACK', snack: this.state.newSnack }
-    this.props.dispatch(action);                 
+    // const action = { type: 'ADD_SNACK', snack: this.state.newSnack }
+    this.props.dispatch({ type: 'ADD_SNACK', snack: this.state.newSnack });   //trying it the one-liner way              
     this.setState({
       newSnack: '',
     });
@@ -39,7 +40,7 @@ class App extends Component {
           <input onChange={this.handleChange} value={this.state.newSnack} />
           <input type="submit" value="snack it" />
         </form>
-
+      <SnackList />
       </div>
     );
   }
